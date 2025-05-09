@@ -1,27 +1,32 @@
 import { Outlet } from "react-router-dom";
-// import Menu from "../../components/menu";
-// import Footer from "../sections/Footer";
+import Menu from "../../components/menu";
+import Footer from "../../components/footer";
+
 import { Box } from "@mui/material";
 
 const Layout = () => {
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
       <Box component="header">
-        {/* <Menu /> */}
-        <h1>Menu</h1>
+        <Menu />
       </Box>
-      <div
-        style={{
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
           marginTop: "76px",
         }}
       >
         <Outlet />
-      </div>
-      <Box component="footer">
-        {/* <Footer /> */}
-        <h1>Footer</h1>
       </Box>
-    </div>
+      <Footer />
+    </Box>
   );
 };
 
