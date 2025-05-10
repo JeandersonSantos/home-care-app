@@ -4,7 +4,7 @@ export const SecondaryLight: {
   light: string;
   contrastText: string;
 } = {
-  main: "#4caf50",
+  main: "#0fa808",
   dark: "#246827",
   light: "#81c784",
   contrastText: "#ffffff",

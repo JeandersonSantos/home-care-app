@@ -6,6 +6,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Typography,
+  Stack
 } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
@@ -16,6 +18,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import DrawerHeader from "../../components/drawerHeader";
 import CustomDrawer from "./components/CustomDrawer";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 
 interface MenuVerticalProps {
   open: boolean;
@@ -46,13 +49,19 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
   return (
     <CustomDrawer variant="permanent" open={open} drawerWidth={drawerWidth}>
       <DrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
-          {theme.direction === "rtl" ? (
-            <ChevronRightIcon />
-          ) : (
-            <ChevronLeftIcon />
-          )}
-        </IconButton>
+        <Stack width="100%" pl="15px" display="flex" direction="row" alignItems="center" justifyContent={"space-between"}>
+            <Stack display="flex" direction="row" gap='15px'>
+                <MedicalServicesIcon/>
+                <Typography variant="h6" fontWeight={600} color={theme.palette.secondary.main}>Serviços</Typography>
+            </Stack>
+            <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+            ) : (
+                <ChevronLeftIcon />
+            )}
+            </IconButton>
+        </Stack>
       </DrawerHeader>
       <Divider />
       <List>
@@ -60,62 +69,62 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
         const isSelected = location.pathname === item.path; 
 
          return (
-             <ListItem 
-          key={item.text}
-           disablePadding
-            sx={{
+            <ListItem 
+                key={item.text}
+                disablePadding
+                sx={{
                 display: "block" ,
                 bgcolor: isSelected ? "rgba(16, 126, 143, 0.1)" : "inherit", // Fundo branco transparente para o item selecionado
             }}>
             <ListItemButton
-              sx={[
-                {
-                  minHeight: 48,
-                  px: 2.5,
-                },
-                open
-                  ? {
-                      justifyContent: "initial",
-                    }
-                  : {
-                      justifyContent: "center",
+                sx={[
+                    {
+                    minHeight: 48,
+                    px: 2.5,
                     },
-              ]}
-              onClick={() => {
-                navigateRouter(item.path);
-              }}
+                    open
+                    ? {
+                        justifyContent: "initial",
+                        }
+                    : {
+                        justifyContent: "center",
+                        },
+                ]}
+                onClick={() => {
+                    navigateRouter(item.path);
+                }}
             >
-              <ListItemIcon
-                sx={[
-                  {
-                    minWidth: 0,
-                    justifyContent: "center",
-                  },
-                  open
-                    ? {
-                        mr: 3,
-                      }
-                    : {
-                        mr: "auto",
-                      },
-                ]}
-                
-              >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                sx={[
-                  open
-                    ? {
-                        opacity: 1,
-                      }
-                    : {
-                        opacity: 0,
-                      },
-                ]}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                    sx={[
+                    {
+                        minWidth: 0,
+                        justifyContent: "center",
+                    },
+                    open
+                        ? {
+                            mr: 3,
+                        }
+                        : {
+                            mr: "auto",
+                        },
+                    ]}
+                    
+                >
+                    {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                    primary={item.text}
+                    sx={[
+                    open
+                        ? {
+                            opacity: 1,
+                        }
+                        : {
+                            opacity: 0,
+                        },
+                    ]}
+                />
+                </ListItemButton>
           </ListItem>
          )
         })}

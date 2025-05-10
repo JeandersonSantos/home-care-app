@@ -66,14 +66,15 @@ const MenuBar = () => {
               <Stack
                 sx={{
                   pl: "30px",
+                  mt:'5px'
                 }}
               >
-                Logo
+                <img src="src/assets/img/logo.png" alt="logo" height="65px" />
               </Stack>
             </Box>
-            <Tooltip title="João">
+            <Tooltip title="Analu Emily">
               <Stack sx={{ p: "12px" }}>
-                <Avatar alt="Remy Sharp" sx={{ width: 40, height: 40 }} />
+                <Avatar alt="Analu Emily" src="src/assets/img/attendant.jpeg" sx={{ width: 40, height: 40 }} />
               </Stack>
             </Tooltip>
           </Toolbar>

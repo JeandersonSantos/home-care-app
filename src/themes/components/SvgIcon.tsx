@@ -5,7 +5,7 @@ export const SvgIcon = (palette: Theme["palette"]): Components<Theme> => {
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: palette.tree.dark,
+          color: palette.tree.main,
         },
       },
     },
