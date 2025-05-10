@@ -16,30 +16,19 @@ const Footer = () => {
     >
       <Stack sx={{ pl: "30px", pr: "30px" }}>
         <Stack
-          display="flex"
-          direction="column"
-          justifyContent="space-between"
-          alignItems="center"
-          spacing={2}
-        >
-          <Stack
             display="flex"
             direction="row"
-            justifyContent="space-between"
+            justifyContent="center"
             alignItems="center"
             spacing={2}
             sx={{
               width: "100%",
             }}
-          >
-            <Stack direction="row" alignItems="center">
-              logo
-            </Stack>
-            <Typography variant="body2" sx={{ textAlign: "center", pt: "7px" }}>
-              © Home Care {new Date().getFullYear()}. todos os direitos
-              reservados.
-            </Typography>
-          </Stack>
+        >
+          <Typography variant="body2" sx={{ textAlign: "center", pt: "7px" }}>
+            © Home Care {new Date().getFullYear()}. todos os direitos
+            reservados.
+          </Typography>
         </Stack>
       </Stack>
     </Box>
