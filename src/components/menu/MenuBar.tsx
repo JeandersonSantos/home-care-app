@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuVertical from "./MenuVertical";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import CustomAppBar from "./components/CustomAppBar";
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const MenuBar = () => {
   const theme = useTheme();

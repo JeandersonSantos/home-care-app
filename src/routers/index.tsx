@@ -10,7 +10,7 @@ const Routers = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<ScheduleMedicalCare />} />
           <Route
-            path="/registration-medical-care"
+            path="/records"
             element={<ListSheduleMedicalCare />}
           />
         </Route>

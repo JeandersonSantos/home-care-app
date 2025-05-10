@@ -27,7 +27,6 @@ interface CustomDrawerProps {
   drawerWidth: number;
 }
 
-// Drawer estilizado
 const CustomDrawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open" && prop !== "drawerWidth",
 })<CustomDrawerProps>(({ theme, open, drawerWidth }) => ({

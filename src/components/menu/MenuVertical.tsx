@@ -28,20 +28,21 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
   handleDrawerClose,
   drawerWidth,
 }) => {
-  const theme = useTheme();
-  const navigateRouter = useNavigate();
-  // const router = useMemo<Router>(() => {
-  //   return {
-  //     pathname,
-  //     searchParams: new URLSearchParams(),
-  //     navigate: (path) => {
-  //       console.log("path", path);
-  //       navigateRouter(`${path}`);
-
-  //       setPathname(String(path));
-  //     },
-  //   };
-  // }, [pathname]);
+    const theme = useTheme();
+    const navigateRouter = useNavigate();
+    const location = useLocation();
+    const listItemsMenu = [
+        {
+        text: "Atendimento Emergencial",
+        icon: <LocalHospitalIcon />,
+        path: "/",
+        },
+        {
+        text: "Registros de Atendimentos",
+        icon: <ListAltIcon />,
+        path: "/records",
+        },
+    ]
   return (
     <CustomDrawer variant="permanent" open={open} drawerWidth={drawerWidth}>
       <DrawerHeader>
@@ -55,8 +56,17 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
       </DrawerHeader>
       <Divider />
       <List>
-        {["Inbox"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {listItemsMenu.map((item) => {
+        const isSelected = location.pathname === item.path; 
+
+         return (
+             <ListItem 
+          key={item.text}
+           disablePadding
+            sx={{
+                display: "block" ,
+                bgcolor: isSelected ? "rgba(16, 126, 143, 0.1)" : "inherit", // Fundo branco transparente para o item selecionado
+            }}>
             <ListItemButton
               sx={[
                 {
@@ -72,7 +82,7 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
                     },
               ]}
               onClick={() => {
-                navigateRouter("/");
+                navigateRouter(item.path);
               }}
             >
               <ListItemIcon
@@ -91,10 +101,10 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
                 ]}
                 
               >
-                <LocalHospitalIcon />
+                {item.icon}
               </ListItemIcon>
               <ListItemText
-                primary={text}
+                primary={item.text}
                 sx={[
                   open
                     ? {
@@ -107,7 +117,8 @@ const MenuVertical: React.FC<MenuVerticalProps> = ({
               />
             </ListItemButton>
           </ListItem>
-        ))}
+         )
+        })}
       </List>
     </CustomDrawer>
   );
