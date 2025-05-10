@@ -1,13 +1,14 @@
-import { Container, Stack, Typography, Box } from "@mui/material";
+import { Stack, Typography, Box, useTheme } from "@mui/material";
 
 const Footer = () => {
+  const theme = useTheme();
+
   return (
     <Box
       id="footer"
       component="footer"
       sx={{
-        mt: "50px",
-        bgcolor: "secundary.main",
+        bgcolor: theme.palette.primary.main,
         py: 3,
         px: 2,
         boxShadow: "0px -4px 8px rgba(0, 0, 0, 0.2)",

@@ -1,16 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Menu from "../../components/menu";
 import Footer from "../../components/footer";
-
-import { Box } from "@mui/material";
+import {  Box, Stack } from "@mui/material";
+import DrawerHeader from "../../components/drawerHeader";
 
 const Layout = () => {
+
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
+        height: "100vh",
       }}
     >
       <Box component="header">
@@ -20,12 +20,16 @@ const Layout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          marginTop: "76px",
+          display: "flex",
+          flexDirection: "column", 
         }}
       >
-        <Outlet />
+        <DrawerHeader />
+        <Stack sx={{ flexGrow: 1, p: 3 }}>
+          <Outlet />
+        </Stack>
+        <Footer />
       </Box>
-      <Footer />
     </Box>
   );
 };

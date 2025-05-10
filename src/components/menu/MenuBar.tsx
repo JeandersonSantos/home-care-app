@@ -1,62 +1,90 @@
 import { useState } from "react";
 import {
   Box,
-  AppBar,
   IconButton,
   Toolbar,
-  Container,
   Stack,
   Tooltip,
   Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import MenuVertical from "./MenuVertical";
+import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import CustomAppBar from "./components/CustomAppBar";
+const drawerWidth = 240;
 
 const MenuBar = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
 
-  const handleOpenMenu = (event: any) => {
-    console.log("event.currentTarget", event.currentTarget);
-    setAnchorElNav(event.currentTarget);
+  const handleDrawerOpen = () => {
+    setOpen(true);
   };
 
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
   return (
-    <AppBar position="fixed" sx={{ bgcolor: "#4ce0fd" }} className="menu">
-      <Stack sx={{ pl: "30px", pr: "30px" }}>
-        <Toolbar
-          disableGutters
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Box
+    <>
+      <CustomAppBar
+        position="fixed"
+        sx={{ height: "75px" }}
+        open={open}
+        drawerWidth={drawerWidth}
+      >
+        <Stack sx={{ pl: "30px", pr: "30px" }}>
+          <Toolbar
+            disableGutters
             sx={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            <Tooltip title="Menu">
-              <IconButton size="large" onClick={handleOpenMenu} color="inherit">
-                <MenuIcon />
-              </IconButton>
-            </Tooltip>
-            <Stack
+            <Box
               sx={{
-                pl: "30px",
+                display: "flex",
+                alignItems: "center",
               }}
             >
-              Logo
-            </Stack>
-          </Box>
-          <Tooltip title="João">
-            <Stack sx={{ p: "12px" }}>
-              <Avatar alt="Remy Sharp" sx={{ width: 40, height: 40 }} />
-            </Stack>
-          </Tooltip>
-        </Toolbar>
-      </Stack>
-    </AppBar>
+              <Tooltip title="Menu">
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={[
+                    {
+                      marginRight: 5,
+                    },
+                    open && { display: "none" },
+                  ]}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Tooltip>
+              <Stack
+                sx={{
+                  pl: "30px",
+                }}
+              >
+                Logo
+              </Stack>
+            </Box>
+            <Tooltip title="João">
+              <Stack sx={{ p: "12px" }}>
+                <Avatar alt="Remy Sharp" sx={{ width: 40, height: 40 }} />
+              </Stack>
+            </Tooltip>
+          </Toolbar>
+        </Stack>
+      </CustomAppBar>
+      <MenuVertical
+        open={open}
+        handleDrawerClose={handleDrawerClose}
+        drawerWidth={drawerWidth}
+      />
+    </>
   );
 };
 export default MenuBar;

@@ -1,13 +1,18 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "../modules/layout";
-import MainPage from "../modules/mainPage";
+import ScheduleMedicalCare from "../modules/scheduleMedicalCare";
+import ListSheduleMedicalCare from "../modules/listSheduleMedicalCare";
 
 const Routers = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
+          <Route index element={<ScheduleMedicalCare />} />
+          <Route
+            path="/registration-medical-care"
+            element={<ListSheduleMedicalCare />}
+          />
         </Route>
       </Routes>
     </Router>
