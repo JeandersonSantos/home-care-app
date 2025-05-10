@@ -1,17 +1,17 @@
-import { Stack, Typography, Box, useTheme } from "@mui/material";
+import { Stack, Typography, Box, Paper } from "@mui/material";
 
 const Footer = () => {
-  const theme = useTheme();
 
   return (
-    <Box
+    <Paper
       id="footer"
       component="footer"
+      elevation={0}
       sx={{
-        bgcolor: theme.palette.primary.main,
         py: 3,
         px: 2,
         boxShadow: "0px -4px 8px rgba(0, 0, 0, 0.2)",
+        borderRadius: 0
       }}
     >
       <Stack sx={{ pl: "30px", pr: "30px" }}>
@@ -31,7 +31,7 @@ const Footer = () => {
           </Typography>
         </Stack>
       </Stack>
-    </Box>
+    </Paper>
   );
 };
 
