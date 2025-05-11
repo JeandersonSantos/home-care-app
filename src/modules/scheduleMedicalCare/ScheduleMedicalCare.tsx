@@ -9,9 +9,12 @@ import {
   Divider,
   Button,
   Autocomplete,
+  TextFieldProps,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import states from "../../utils/states";
+import InputMask from "react-input-mask"; // Importa o InputMask
+
 const ScheduleMedicalCare = () => {
   const theme = useTheme();
   const formRefs = useRef<(HTMLInputElement | HTMLButtonElement | null)[]>([]);
@@ -95,14 +98,24 @@ const ScheduleMedicalCare = () => {
             />
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
-            <TextField
-              id="phone"
-              label="Telefone"
-              variant="outlined"
-              fullWidth
-              inputRef={(el) => (formRefs.current[1] = el)}
-              onKeyDown={(event) => handleKeyDown(event, 1)}
-            />
+            <InputMask
+              mask="(99) 99999-9999" // Define a máscara para telefone
+              onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) =>
+                handleKeyDown(event, 1)
+              }
+            >
+              {(inputProps: TextFieldProps) => (
+                <TextField
+                  {...inputProps}
+                  id="phone"
+                  label="Telefone"
+                  placeholder="(99) 99999-9999"
+                  variant="outlined"
+                  fullWidth
+                  inputRef={(el) => (formRefs.current[1] = el)}
+                />
+              )}
+            </InputMask>
           </Grid>
           <Divider sx={{ width: "100%" }} />
           <Grid size={{ xs: 12, md: 8 }}>
