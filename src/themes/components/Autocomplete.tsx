@@ -1,11 +1,14 @@
 import { Components, Theme } from "@mui/material/styles";
 
-export const SvgIcon = (palette: Theme["palette"]): Components<Theme> => {
+export const Autocomplete = (palette: Theme["palette"]): Components<Theme> => {
   return {
-    MuiSvgIcon: {
+    MuiInputLabel: {
       styleOverrides: {
         root: {
           color: palette.secondary.dark,
+          "&.Mui-focused": {
+            color: palette.secondary.dark,
+          },
         },
       },
     },

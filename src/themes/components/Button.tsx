@@ -5,10 +5,11 @@ export const Button = (palette: Theme["palette"]): Components<Theme> => {
     MuiButton: {
       styleOverrides: {
         root: {
-          color: palette.primary.contrastText,
-          backgroundColor: palette.primary.dark,
+          color: palette.background.default,
+          backgroundColor: palette.secondary.main,
           "&:hover": {
-            backgroundColor: palette.primary.light,
+            backgroundColor: "rgba(15, 168, 8, 0.8)",
+            border: `1px solid rgba(15, 168, 8, 0.8)`, 
           },
         },
       },
