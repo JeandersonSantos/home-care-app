@@ -11,24 +11,22 @@ import SendIcon from "@mui/icons-material/Send";
 import InputMask from "react-input-mask";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FormValues } from "../../../types/formValues";
+import { useCreateEmergencyCare } from "../../../hooks/emergencyCare/useCreateEmergencyCare";
+import { enqueueSnackbar } from "notistack";
 
-interface FormValues {
-  name: string;
-  phone: string;
-  street: string;
-  number: string;
-  neighborhood: string;
-  city: string;
-}
 const EmergencyCareForm = () => {
   const theme = useTheme();
   const formRefs = useRef<(HTMLInputElement | HTMLButtonElement | null)[]>([]);
+  const createEmergencyCare = useCreateEmergencyCare();
   const handleKeyDown = (event: React.KeyboardEvent, index: number) => {
     if (event.key === "Enter") {
       event.preventDefault();
       const nextField = formRefs.current[index + 1];
       if (nextField) {
         nextField.focus();
+      } else if (formRefs.current[index] instanceof HTMLButtonElement) {
+        formRefs.current[index].click();
       }
     }
   };
@@ -45,15 +43,28 @@ const EmergencyCareForm = () => {
     neighborhood: Yup.string().required("Bairro é obrigatório"),
     city: Yup.string().required("Cidade é obrigatório"),
   });
-  const save = (values: FormValues) => {
-    const payload = {
-      name: values.name,
-      phone: values.phone,
-      street: values.street,
-      number: values.number,
-      neighborhood: values.neighborhood,
-      city: values.city,
-    };
+  const save = async (values: FormValues) => {
+    try {
+      const payload = {
+        name: values.name,
+        phone: values.phone,
+        street: values.street,
+        number: values.number,
+        neighborhood: values.neighborhood,
+        city: values.city,
+      };
+      const response = await createEmergencyCare.mutateAsync(payload);
+      enqueueSnackbar("Registro Emergencial realizado com sucesso!", {
+        variant: "success",
+        anchorOrigin: { vertical: "bottom", horizontal: "center" },
+      });
+      formik.resetForm();
+    } catch (error) {
+      enqueueSnackbar("Não foi possivel realizar o registro!", {
+        variant: "error",
+        anchorOrigin: { vertical: "bottom", horizontal: "center" },
+      });
+    }
   };
   const formik = useFormik({
     initialValues: {
@@ -197,8 +208,8 @@ const EmergencyCareForm = () => {
           <Button
             type="submit"
             size="large"
-            sx={{ width: "270px" }}
-            loading={false}
+            sx={{ width: "300px" }}
+            loading={createEmergencyCare.isPending}
             variant="outlined"
             loadingPosition="start"
             endIcon={
@@ -209,9 +220,9 @@ const EmergencyCareForm = () => {
               />
             }
             ref={(el) =>
-              (formRefs.current[7] = el as unknown as HTMLButtonElement)
+              (formRefs.current[6] = el as unknown as HTMLButtonElement)
             }
-            onKeyDown={(event) => handleKeyDown(event, 7)}
+            onKeyDown={(event) => handleKeyDown(event, 6)}
           >
             Solicitar Atendimneto
           </Button>
