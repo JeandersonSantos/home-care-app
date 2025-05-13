@@ -3,6 +3,7 @@ import EmergencyCareForm from "./components/EmergencyCareForm";
 
 const ScheduleMedicalCare = () => {
   const theme = useTheme();
+  
   return (
     <Stack
       display="flex"
