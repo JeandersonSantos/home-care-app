@@ -1,20 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, forwardRef } from "react";
 import {
   Grid,
   useTheme,
   TextField,
   Divider,
   Button,
-  TextFieldProps,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import InputMask from "react-input-mask";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FormValues } from "../../../types/formValues";
 import { useCreateEmergencyCare } from "../../../hooks/emergencyCare/useCreateEmergencyCare";
 import { enqueueSnackbar } from "notistack";
 import ModalShowInfo from "./ModalShowInfo";
+import {MaskedInput} from "../../../components/phoneMask/index";
+
 const EmergencyCareForm = () => {
   const theme = useTheme();
   const formRefs = useRef<(HTMLInputElement | HTMLButtonElement | null)[]>([]);
@@ -124,31 +124,27 @@ const EmergencyCareForm = () => {
             />
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
-            <InputMask
-              mask="(99) 99999-9999"
+            <TextField
+              id="phone"
+              required
+              name="phone"
+              label="Telefone"
+              placeholder="(99) 99999-9999"
+              variant="outlined"
+              fullWidth
               onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) =>
                 handleKeyDown(event, 1)
               }
               value={formik.values.phone}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-            >
-              {(inputProps: TextFieldProps) => (
-                <TextField
-                  {...inputProps}
-                  id="phone"
-                  required
-                  name="phone"
-                  label="Telefone"
-                  placeholder="(99) 99999-9999"
-                  variant="outlined"
-                  fullWidth
-                  inputRef={(el) => (formRefs.current[1] = el)}
-                  error={formik.touched.phone && Boolean(formik.errors.phone)}
-                  helperText={formik.touched.phone && formik.errors.phone}
-                />
-              )}
-            </InputMask>
+              error={formik.touched.phone && Boolean(formik.errors.phone)}
+              helperText={formik.touched.phone && formik.errors.phone}
+              inputRef={(el) => (formRefs.current[1] = el)}
+              InputProps={{
+                inputComponent: MaskedInput as any,
+              }}
+            />
           </Grid>
           <Divider sx={{ width: "100%" }} />
           <Grid size={{ xs: 12, md: 8 }}>
