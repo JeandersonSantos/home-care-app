@@ -21,7 +21,7 @@ Aplicação **web** para registro de atendimentos emergenciais em **home care**,
 
 ## ⚙️ Pré-requisitos
 
-- [Node.js](https://nodejs.org/en/) v18 ou superior (recomendado: v22.15.0)
+- [Node.js](https://nodejs.org/en/) v22.15.0
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
 ## 🚀 Instalação
