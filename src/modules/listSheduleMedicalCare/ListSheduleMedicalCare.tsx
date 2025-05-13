@@ -5,7 +5,7 @@ import {
   useTheme,
   CircularProgress,
 } from "@mui/material";
-import {  useMemo } from "react";
+import { useMemo } from "react";
 import {
   MaterialReactTable,
   useMaterialReactTable,
@@ -24,26 +24,36 @@ const ListSheduleMedicalCare = () => {
         accessorKey: "name",
         header: "Nome",
         size: 150,
+        minSize: 100,
+        maxSize: 200,
       },
       {
         accessorKey: "phone",
         header: "Telefone",
         size: 200,
+        minSize: 100,
+        maxSize: 200,
       },
       {
         accessorKey: "number",
         header: "Número",
         size: 150,
+        minSize: 100,
+        maxSize: 200,
       },
       {
         accessorKey: "neighborhood",
         header: "Bairro",
         size: 150,
+        minSize: 100,
+        maxSize: 200,
       },
       {
         accessorKey: "city",
         header: "Cidade",
         size: 150,
+        minSize: 100,
+        maxSize: 200,
       },
     ],
     [data, isFetched, isLoading]
@@ -55,6 +65,14 @@ const ListSheduleMedicalCare = () => {
     state: {
       isLoading,
     },
+    muiTableContainerProps: {
+      sx: {
+        maxWidth: "100%",
+        overflowX: "auto",
+      },
+    },
+    enableColumnResizing: true,
+    layoutMode: "grid",
   });
 
   return (
@@ -69,6 +87,11 @@ const ListSheduleMedicalCare = () => {
           width: "95%",
           p: 2,
           textAlign: "center",
+          [theme.breakpoints.down("sm")]: {
+            width: "100%",
+            padding: 1,
+            overflowX: "auto",
+          },
         }}
       >
         <Stack
