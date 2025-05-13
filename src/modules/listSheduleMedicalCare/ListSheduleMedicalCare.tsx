@@ -95,7 +95,7 @@ const ListSheduleMedicalCare = () => {
         }}
       >
         <Stack
-          bgcolor={theme.palette.secondary.main}
+          bgcolor={theme.palette.secondary.dark}
           textAlign="center"
           justifyContent="center"
           sx={{
@@ -105,9 +105,10 @@ const ListSheduleMedicalCare = () => {
             },
             borderTopLeftRadius: "8px",
             borderTopRightRadius: "8px",
+            p: "5px",
           }}
         >
-          <Typography variant="h5" fontWeight={600} sx={{ p: 3 }} color="white">
+          <Typography variant="h5" fontWeight={600} color="white">
             Histórico de atendimentos
           </Typography>
         </Stack>

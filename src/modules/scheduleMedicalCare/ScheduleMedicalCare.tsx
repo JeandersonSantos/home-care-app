@@ -3,7 +3,7 @@ import EmergencyCareForm from "./components/EmergencyCareForm";
 
 const ScheduleMedicalCare = () => {
   const theme = useTheme();
-  
+
   return (
     <Stack
       display="flex"
@@ -20,7 +20,7 @@ const ScheduleMedicalCare = () => {
       >
         <Stack mb="15px">
           <Stack
-            bgcolor={theme.palette.secondary.main}
+            bgcolor={theme.palette.secondary.dark}
             textAlign="center"
             justifyContent="center"
             sx={{
@@ -46,7 +46,7 @@ const ScheduleMedicalCare = () => {
             </Typography>
           </Stack>
           <Stack
-            bgcolor={theme.palette.secondary.light}
+            bgcolor={theme.palette.secondary.main}
             height="40px"
             justifyContent="center"
             pl="10px"

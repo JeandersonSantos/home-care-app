@@ -1,11 +1,5 @@
 import React, { useRef, useState, forwardRef } from "react";
-import {
-  Grid,
-  useTheme,
-  TextField,
-  Divider,
-  Button,
-} from "@mui/material";
+import { Grid, useTheme, TextField, Divider, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -13,7 +7,8 @@ import { FormValues } from "../../../types/formValues";
 import { useCreateEmergencyCare } from "../../../hooks/emergencyCare/useCreateEmergencyCare";
 import { enqueueSnackbar } from "notistack";
 import ModalShowInfo from "./ModalShowInfo";
-import {MaskedInput} from "../../../components/phoneMask/index";
+import { MaskedInput } from "../../../components/phoneMask/index";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const EmergencyCareForm = () => {
   const theme = useTheme();
@@ -223,28 +218,55 @@ const EmergencyCareForm = () => {
           <Grid size={{ xs: 12, md: 4 }}></Grid>
 
           <Divider sx={{ width: "100%" }} />
-          <Grid size={{ xs: 12 }}>
-            <Button
-              type="submit"
-              size="large"
-              sx={{ width: "300px" }}
-              loading={createEmergencyCare.isPending}
-              variant="outlined"
-              loadingPosition="start"
-              endIcon={
-                <SendIcon
-                  sx={{
-                    color: `${theme.palette.background.default} !important`,
-                  }}
-                />
-              }
-              ref={(el) =>
-                (formRefs.current[6] = el as unknown as HTMLButtonElement)
-              }
-              onKeyDown={(event) => handleKeyDown(event, 6)}
-            >
-              Solicitar Atendimneto
-            </Button>
+          <Grid
+            size={{ xs: 12, md: 12 }}
+            container
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Button
+                type="submit"
+                size="large"
+                sx={{ maxWidth: "300px" }}
+                loading={createEmergencyCare.isPending}
+                variant="outlined"
+                loadingPosition="start"
+                endIcon={
+                  <SendIcon
+                    sx={{
+                      color: `${theme.palette.background.default} !important`,
+                    }}
+                  />
+                }
+                ref={(el) =>
+                  (formRefs.current[6] = el as unknown as HTMLButtonElement)
+                }
+                onKeyDown={(event) => handleKeyDown(event, 6)}
+              >
+                Solicitar Atendimneto
+              </Button>
+            </Grid>
+            <Grid size={{ xs: 12, md: 4 }}>
+              <Button
+                size="large"
+                variant="outlined"
+                loadingPosition="start"
+                sx={{
+                  float: { md: "right" },
+                }}
+                endIcon={
+                  <DeleteIcon
+                    sx={{
+                      color: `${theme.palette.background.default} !important`,
+                    }}
+                  />
+                }
+                onClick={() => formik.resetForm()}
+              >
+                Limpar
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       </form>
