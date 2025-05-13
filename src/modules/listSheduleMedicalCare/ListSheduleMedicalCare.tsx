@@ -16,9 +16,7 @@ import { useListEmergencyCare } from "../../hooks/emergencyCare/useListEmergency
 
 const ListSheduleMedicalCare = () => {
   const { data = [], isLoading, isFetched } = useListEmergencyCare();
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
   const theme = useTheme();
   const columns = useMemo<MRT_ColumnDef<ListAttendance>[]>(
     () => [
