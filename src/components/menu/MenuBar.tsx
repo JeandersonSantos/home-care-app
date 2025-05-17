@@ -11,6 +11,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuVertical from "./MenuVertical";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import CustomAppBar from "./components/CustomAppBar";
+import logo from "../../assets/img/logo.png";
+import attendant from "../../assets/img/attendant.jpeg";
+
 const drawerWidth = 280;
 
 const MenuBar = () => {
@@ -66,15 +69,19 @@ const MenuBar = () => {
               <Stack
                 sx={{
                   pl: "30px",
-                  mt:'5px'
+                  mt: "5px",
                 }}
               >
-                <img src="src/assets/img/logo.png" alt="logo" height="65px" />
+                <img src={logo} alt="logo" height="65px" />
               </Stack>
             </Box>
             <Tooltip title="Analu Emily">
               <Stack sx={{ p: "12px" }}>
-                <Avatar alt="Analu Emily" src="src/assets/img/attendant.jpeg" sx={{ width: 40, height: 40 }} />
+                <Avatar
+                  alt="Analu Emily"
+                  src={attendant}
+                  sx={{ width: 40, height: 40 }}
+                />
               </Stack>
             </Tooltip>
           </Toolbar>
