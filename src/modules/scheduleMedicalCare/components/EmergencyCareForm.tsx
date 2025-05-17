@@ -30,8 +30,11 @@ const EmergencyCareForm = () => {
       const nextField = formRefs.current[index + 1];
       if (nextField) {
         nextField.focus();
-      } else if (formRefs.current[index] instanceof HTMLButtonElement) {
-        formRefs.current[index].click();
+      } else {
+        const currentField = formRefs.current[index];
+        if (currentField instanceof HTMLButtonElement) {
+          currentField.click();
+        }
       }
     }
   };
