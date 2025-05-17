@@ -2,11 +2,11 @@
 
 Aplicação **web** para registro de atendimentos emergenciais em **home care**, desenvolvida com **React**, **Vite** e **Material UI**.
 
-## Demostrção
-<img width="470" heigth="300" src="src/assets/to-readme/home-care.gif"><br/>
-
 ## Deploy
 Confira a aplicação em produção [clicando aqui](https://home-care-app-black.vercel.app/)
+
+## Demostrção
+<img width="470" heigth="300" src="src/assets/to-readme/home-care.gif"><br/>
 
 ## 🧰 Tecnologias Utilizadas
 
