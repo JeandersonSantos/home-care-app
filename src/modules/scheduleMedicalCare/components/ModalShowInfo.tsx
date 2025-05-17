@@ -97,7 +97,7 @@ const ModalShowInfo = ({ open, handleClose, info }: ModalShowInfoProps) => {
                 >
                   <Tooltip title={`Dr: ${info.doctor}`}>
                     <img
-                      src="src/assets/img/doctor.jpg"
+                      src="/static/images/doctor.jpg"
                       alt="doutor"
                       height="140px"
                       style={{ cursor: "pointer" }}
